@@ -1,3 +1,5 @@
+let y = 0;
+
 function compPlay() {
     const number = Math.floor(Math.random() * (3 - 0) + 0)
     switch (number) {
@@ -6,10 +8,22 @@ function compPlay() {
         case 2: return "scissors";
     }
 }
-console.log(compPlay());
+function playerInput() {
+    while (y < 3000) {
+        // console.log("Select Rock,Paper, or Scissors: ");
+        let input = prompt("Select Rock,Paper, or Scissors: ");
+        input = input.toLowerCase();
+        if (input == "rock" || input == "paper" || input == "scissors") {
+            return input;
+        }
+        else
+            console.log("You idiot!");
+        y++;
+    }
+}
 
-
-
+const x = playerInput();
+console.log(x);
 
 
 
