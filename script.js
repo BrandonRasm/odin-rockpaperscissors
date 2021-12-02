@@ -21,10 +21,50 @@ function playerInput() {
         y++;
     }
 }
+function playRound() {
+    let pInput = playerInput();
+    let cInput = compPlay();
+    console.log(cInput);
+    if (cInput == pInput) {
+        return "Draw!";
+    }
+    if (pInput == "scissors") {
+        return (cInput == "rock") ? "Lose!" : "Win!";
+    }
+    if (cInput == "scissors") {
+        return (pInput == "rock") ? "Win!" : "Lose!";
+    }
+    return (pInput == "paper") ? "Win!" : "Lose!";
 
-const x = playerInput();
-console.log(x);
+}
 
+function game() {
+    let pScore = 0;
+    let cScore = 0;
+
+    for (let i = 0; i < 6; i++) {
+        let result = playRound()
+        switch (result) {
+            case "Win!": pScore++;
+                break;
+            case "Lose!": cScore++;
+                break;
+            case "Draw!": break;
+            default: console.log("Something went wrong!");
+        }
+        console.log("Round " + (i + 1) + ": " + result);
+    }
+    if (pScore == cScore) {
+        console.log("You tied");
+        return;
+    }
+    if (pScore > cScore)
+        console.log("You did it!");
+    else
+        console.log("You suck!");
+
+}
+game();
 
 
 
