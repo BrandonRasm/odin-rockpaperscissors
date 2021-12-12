@@ -1,7 +1,8 @@
 const butts = document.querySelectorAll("button");
+const resultOutput = document.querySelector(".result")
 butts.forEach(butt => {
     butt.addEventListener('click', event => {
-        playRound(butt);
+        resultOutput.textContent = playRound(butt);
     })
 })
 
@@ -28,8 +29,6 @@ function playerInput() {
 }
 function playRound(input) {
     x = input.classList;
-    // y = x.item(0);
-    // console.log(y);
     const pInput = x.item(0);
     let cInput = compPlay();
     if (cInput == pInput) {
