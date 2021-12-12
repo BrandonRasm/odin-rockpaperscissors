@@ -1,10 +1,3 @@
-const butts = document.querySelectorAll("button");
-const resultOutput = document.querySelector(".result")
-butts.forEach(butt => {
-    butt.addEventListener('click', event => {
-        resultOutput.textContent = playRound(butt);
-    })
-})
 
 
 function compPlay() {
@@ -45,32 +38,54 @@ function playRound(input) {
 }
 
 function game() {
+    //initialize score
     let pScore = 0;
     let cScore = 0;
+    let currentRound = 1;
 
-    for (let i = 0; i < 6; i++) {
-        let result = playRound()
-        switch (result) {
-            case "Win!": pScore++;
-                break;
-            case "Lose!": cScore++;
-                break;
-            case "Draw!": break;
-            default: console.log("Something went wrong!");
-        }lt: console.log("Something went wrong!");
-    }
-    console.log("Round " + (i + 1) + ": " + result);
-    if (pScore == cScore) {
-        console.log("You tied");
-        return;
-    }
-    if (pScore > cScore)
-        console.log("You did it!");
-    else
-        console.log("You suck!");
+    //get references to Domlist
+    const butts = document.querySelectorAll("button");
+    const resultOutput = document.querySelector(".result");
+    const pScoreOutput = document.querySelector(".pScore");
+    const cScoreOutput = document.querySelector(".cScore");
+
+    //primary round logic
+    butts.forEach(butt => {
+        butt.addEventListener('click', event => {
+            let result = playRound(butt)
+            switch (result) {
+                case "Win!": pScore++;
+                    break;
+                case "Lose!": cScore++;
+                    break;
+                case "Draw!": break;
+                default: alert("Something went wrong!");
+            }
+            resultOutput.textContent = ("Round " + (currentRound++) + ": " + result);
+            pScoreOutput.textContent = ("Player Score: " + pScore);
+            cScoreOutput.textContent = ("Computer Score: " + cScore);
+
+
+            //scorekeeping and end result display
+            if (currentRound >= 6) {
+
+                console.log("aslidjfghasl");
+                if (pScore == cScore) {
+                    alert("You tied");
+                    return;
+                }
+                if (pScore > cScore)
+                    alert("You did it!");
+                else
+                    alert("You suck!");
+            }
+        })
+    })
+
+
 
 }
-// game();
+game();
 
 
 
