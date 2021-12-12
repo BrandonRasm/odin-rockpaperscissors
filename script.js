@@ -1,4 +1,10 @@
-let y = 0;
+const butts = document.querySelectorAll("button");
+butts.forEach(butt => {
+    butt.addEventListener('click', event => {
+        playRound(butt);
+    })
+})
+
 
 function compPlay() {
     const number = Math.floor(Math.random() * (3 - 0) + 0)
@@ -9,7 +15,7 @@ function compPlay() {
     }
 }
 function playerInput() {
-    while (y < 3000) {
+    while (true) {
         // console.log("Select Rock,Paper, or Scissors: ");
         let input = prompt("Select Rock,Paper, or Scissors: ");
         input = input.toLowerCase();
@@ -18,13 +24,14 @@ function playerInput() {
         }
         else
             console.log("You idiot!");
-        y++;
     }
 }
-function playRound() {
-    let pInput = playerInput();
+function playRound(input) {
+    x = input.classList;
+    // y = x.item(0);
+    // console.log(y);
+    const pInput = x.item(0);
     let cInput = compPlay();
-    console.log(cInput);
     if (cInput == pInput) {
         return "Draw!";
     }
@@ -51,9 +58,9 @@ function game() {
                 break;
             case "Draw!": break;
             default: console.log("Something went wrong!");
-        }
-        console.log("Round " + (i + 1) + ": " + result);
+        }lt: console.log("Something went wrong!");
     }
+    console.log("Round " + (i + 1) + ": " + result);
     if (pScore == cScore) {
         console.log("You tied");
         return;
@@ -64,7 +71,7 @@ function game() {
         console.log("You suck!");
 
 }
-game();
+// game();
 
 
 
